@@ -25,10 +25,10 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Token");
         }
 
-        String token = authHeader.substring(7); // strip "Bearer "
+        String token = authHeader.substring(7);
 
         try {
-            jwtDecoder.decode(token); // verifies signature + expiry against Keycloak
+            jwtDecoder.decode(token);
             return ResponseEntity.ok("Valid Token");
         } catch (JwtException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Token");
